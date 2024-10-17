@@ -3,8 +3,8 @@ const app = express()
 const cors = require('cors')
 const error = require('./middlewares/error')
 const notFound = require('./middlewares/notFound')
-
-
+const authRoute = require('./routes/authRoute')
+const articleRoute = require ('./routes/articleRoute')
 
 
 app.use(cors())
@@ -13,6 +13,9 @@ app.use(express.json())
 app.get('/test',(req,res)=>{
     res.send('test from sarupsaisin')
 })
+
+app.use('/auth',authRoute)
+app.use('/article',articleRoute)
 
 app.use(error)
 app.use('*',notFound)
