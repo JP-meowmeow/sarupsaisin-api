@@ -23,14 +23,13 @@ model User {
   updatedAt DateTime @updatedAt
 
   createdArticle Article[]
+  createdCourse  Course[]
 }
 
 enum roles {
   ADMIN
   USER
 }
-
-
 
 model Article {
   id                   Int      @id @default(autoincrement())
@@ -44,22 +43,27 @@ model Article {
 }
 
 model Course {
-  id          Int      @id @default(autoincrement())
-  title       String
-  description String
-  price       Decimal  @db.Decimal(10, 2)
-  sold        Int      @default(0)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  videos      Video[]
+  id                  Int      @id @default(autoincrement())
+  courseName          String
+  shortDescription    String
+  longDescription     String   @db.LongText
+  courseThumbnailLink String
+  price               Decimal  @db.Decimal(10, 2)
+  sold                Int?     @default(0)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  user                User?    @relation(fields: [userId], references: [id])
+  userId              Int?
+  unit                Unit[]
 }
 
-model Video {
-  id        Int      @id @default(autoincrement())
-  title     String
-  youtubeId String
-  course    Course   @relation(fields: [courseId], references: [id])
-  courseId  Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model Unit {
+  id          Int     @id @default(autoincrement())
+  unitNumber  Int
+  title       String
+  description String?
+  youtubeLink String
+
+  Course   Course? @relation(fields: [courseId], references: [id])
+  courseId Int?
 }

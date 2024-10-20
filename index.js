@@ -5,7 +5,7 @@ const error = require('./middlewares/error')
 const notFound = require('./middlewares/notFound')
 const authRoute = require('./routes/authRoute')
 const articleRoute = require ('./routes/articleRoute')
-
+const courseRoute = require("./routes/courseRoute")
 
 app.use(cors())
 app.use(express.json())
@@ -16,6 +16,7 @@ app.get('/test',(req,res)=>{
 
 app.use('/auth',authRoute)
 app.use('/article',articleRoute)
+app.use('/course',courseRoute)
 
 app.use(error)
 app.use('*',notFound)

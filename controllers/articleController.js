@@ -5,6 +5,36 @@ const path = require("path");
 const fs = require("fs/promises");
 const cloudinary = require("../config/cloudinary");
 
+module.exports.getArticle = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const articleData = await prisma.article.findUnique({
+      where: {
+        id: +id,
+      },
+    });
+    console.log("test in article controller", articleData);
+    res.json(articleData);
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports.getEditArticle = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const articleData = await prisma.article.findUnique({
+      where: {
+        id: +id,
+      },
+    });
+    console.log("test in article controller", articleData);
+    res.json(articleData);
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports.deleteArticle = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -13,40 +43,22 @@ module.exports.deleteArticle = async (req, res, next) => {
         id: +id,
       },
     });
-    res.json({message:'delete complete'})
+    res.json({ message: "delete complete" });
   } catch (err) {
     next(err);
   }
 };
 
-module.exports.updateArticle = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const { header, detail } = req.body;
-    const response = await prisma.article.updateMany({
-      where: {
-        id: id,
-      },
-      data: {
-        articleName: header,
-        articleDetails: detail,
-      },
-    });
-  } catch (err) {
-    next(err);
-  }
-};
+
 
 module.exports.getArticleDashboard = async (req, res, next) => {
   try {
     const { id } = req.user;
-    const response = await prisma.article.findMany(
-      {
-        where:{
-          userId:id
-        }
-      }
-    );
+    const response = await prisma.article.findMany({
+      where: {
+        userId: id,
+      },
+    });
     res.json({ response });
   } catch (err) {
     next(err);
@@ -67,20 +79,6 @@ module.exports.getLatestArticle = async (req, res, next) => {
   }
 };
 
-module.exports.getArticle = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const articleData = await prisma.article.findUnique({
-      where: {
-        id: +id,
-      },
-    });
-    res.json(articleData);
-  } catch (err) {
-    next(err);
-  }
-};
-
 module.exports.getAllArticles = async (req, res, next) => {
   try {
     const allArticle = await prisma.article.findMany();
@@ -94,6 +92,41 @@ module.exports.getAllArticles = async (req, res, next) => {
     next(err);
   }
 };
+
+
+module.exports.updateArticle = async (req, res, next) => {
+  try {
+    const {id} = req.params;
+    const { header, detail} = req.body;
+
+    const haveFile = !!req.file;
+    let uploadResult = req.body.link;
+
+    if (haveFile) {
+      const result = await cloudinary.uploader.upload(req.file.path, {
+        overwrite: true,
+        public_id: path.parse(req.file.path).name,
+      });
+      uploadResult = result.secure_url;
+      fs.unlink(req.file.path);
+    } 
+
+    const result = await prisma.article.update({
+      where:{
+        id:+id
+      }
+      ,data: {
+        articleName: header ,
+        articleDetails: detail,
+        articleThumbnailLink: uploadResult,
+      },
+    });
+    res.json({ message: "update this one" });
+  } catch (err) {
+    next(err);
+  }
+};
+
 
 module.exports.uploadImage = async (req, res, next) => {
   try {
