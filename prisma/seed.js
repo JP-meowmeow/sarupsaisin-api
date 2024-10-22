@@ -5,40 +5,99 @@ const prisma = new PrismaClient()
 const hashedPassword = bcrypt.hashSync('123456', 10)
 
 const userData = [
-	{
-		email: 'admin@gmail.com',password: hashedPassword, role:'ADMIN'
-	},
-	{
-		email: 'user@gmail.com',password: hashedPassword, role:'USER'
-	}
-	
+  { email: 'admin@gmail.com', password: hashedPassword, role: 'ADMIN' },
+  { email: 'user1@gmail.com', password: hashedPassword, role: 'USER' },
+  { email: 'user2@gmail.com', password: hashedPassword, role: 'USER' },
+  { email: 'user3@gmail.com', password: hashedPassword, role: 'USER' },
+  { email: 'user4@gmail.com', password: hashedPassword, role: 'USER' },
 ]
 
-// const articleData = [
-// 	{
-// 		articleName: 'แนะนำเว็บฝึกสำเนียงภาษาญี่ปุ่น',
-//         createdDate:2024-10-16,
-//         updatedDate:2024-10-16,
-//         articleThumbnailLink:'https://res.cloudinary.com/dhwgh6rof/image/upload/v1729070055/Article_1_n9qdxo.png',
-//         articleDetails:"具岡ナ打遺ふきっド一香シタ岡東本もねぱラ必群あクづ図海ごげレ異公べ法制じて教願ゃ羽業し販隆画シノ水既杉た。聞ウキケヤ集版ラ蛮房ラ面認ヲ属制3済トク貢父テチ券健まわきで相29内メ聞号タソ華地そ玉季力壁周ク。蔵修フカノス棋視ト者安イマ景4会や生12編リ記個んッぶち代悦ヱカ内緊ワイモウ完北今はらつ戦霊条稲べきせふ。声芸ユ佐現ヤルムタ島講一めたほね豊我で費齢のえ集退ほンが捜外クワスル佑中ツ政直転れさぞわ掲道提狙タユフ情未ヲ欧1公トメハタ提縫が経根むげ本各遺拡あわしが。為させ衝供85牟チ図謙シコヤ後経むーさ員南やふでざ劣情げさず避産動追家なー止1生れリゆ災数外使ず。場コ伏3場か者受ク社覧ミヲ航件じリさは会能ヌソ社9大シ約覚けじレ田激わンぐく引図ワサソヌ読串剱せたごわ。発小メハヌエ自含スチ博明ゅづ願伊ル認際えッせ議広止ニセクヤ光影8権へぐ芸勝つゆイン強野レクワ報1遅カヨリ任覚鳥ナケユム可割ちどずの提子る敗読ウチ軽喰杜椿へ。回まふょべ本8比現ひる著窓い盤4取中ご男放岡吉コセユヒ居権ゅ大彦み季錦亮凱孫敦ゅル。応アセ天討やしクも晴料リヌ敬各で粉希フムハチ皇料ら寝微ヤワフ面万イメニウ指向ぱ導堀ヱワ補明まぜべ後表ぐ和10挑懐ひね。 稿ユヘカツ寒問テウヤノ首球社ヲ必上つ暴岡トけた端体ソコロケ兵統テヱロモ家付がけち北索こ投17前守9産とまリ者本挑まおと辺場召喝か。合や顧外クハ名難間ヨ町外コスアモ変多レぶひ守要サタ識56前守7近もやてざ護覧ラくやた供禁ぞほゆ条介少マロニ救日ケユヌ現職クひき鳥困リびとは。女飛スイヱノ天川み任過も月始題トミケ変6北ま声西エヱメハ陸読はにざリ会覧づッ業政ヘモ制盛後談とつきこ事座体歩渡っやリき。賢次ねこし伎由あ書責エカ目題索ぐげうも今量トネメイ友4上ヒメタレ掲歩がおぜど映民ひ激気どだひ村来マコ月般ソサク青弱れ高筆ぐ。訪カルタフ言書属ド電掲ほの経湧オス広容てひに消経クけきじ私断レ患半ミ載話コヱタヨ無市図ッせイ興52東ぼざ図画め氏願リざぽげ。善車ミレヌ浅7出マヌ回18済ワヒリ情2秋ワニムキ品名事ちさぜ感折震ろしラ奥鳥よリこて躍賞求制びード。区ネ競70誌棋けじ男刊レノヨミ浸験ゅぞりつ野占発出みわと変6旅ぐ刺百れまば止橋徳伴飯ルせあ。9日8京ヌモ日井ソヒユセ購止し獲断せがドぴ載活ヨ載検フメネホ全左タケヤ授毎げ必欠サネヨ安田町開イざう政抑垣猛でん。件んず命選レワ以下イタロ攻村て映詳得糖スレソ析会ぎが税野くが際理校スかろと前末ニ傷東新享凡ひ。英はびフ出祉タウニ税4迅ぜに夜南ヌサネミ津象ラ医事ムソハ居区むぎづ人8坊ゆイち第円図ねでルド神内マタユチ束般ラチニホ子氷班綸諮クてみ。50回ムソ応残野経ほの支投べき場敗ぜ低与ワセスヤ生宇義すしわず破員ラ航工ロヱ紙車ラい政4条到べやみつ行標婦項漏ょ。他ぎみ価社せ図団をでの佳件たぼやへ私両がるもう握議住シウク印供ルヱモソ校26型のしてず識幹ゃら側国皇ウキミロ連民別ヌ処差転ヘ自豪棋儀未ぎみ。放聞てゃざ芸約ソリカキ肉由をンゃ国局フ長絶リトニヌ究手セスヌニ作康着ヘラ野万ユ畑社ぽ婦遺コナネヨ措65月ニアメ加京建イリコ精恐飲こクく。自ごフ食傷メ考進ご井旧のッぽ愛行降ラじばぐ第3周健ノメヲ込5族づ計直すっ共台ばさずゃ正車キロニラ企料多リラお。2門テケカト追収きづ接以んね応室年みかけ善7覧メヘ内閉メアス開魔とる治時愛も断改戦と賞変練誌さレル。 国いた学高ずおじ緩噤読ラ月初そみつフ森索セレヲミ倉統なむうぎ到物善けざ懲愛早黙報でせー質陽えめ合今ハイツシ表人ヒキニミ用見ま選日みそ感普ろル。講ウリヱ交型ハ所68議ユルムメ的委テハカソ問下賞ほろッぎ場巨ヲルムヱ条31叫ぴもぎ合46力トニウ売志わス問柏沼烈レとるそ。入サミキハ自世を益猛うドリて上速りだ任着クツユウ円英こ火出申っ先続クスノ語渡ツコヒエ会学風次クミ射13潤すめク応昇試連隊あさ。 芸ぶで難修タ指八けぱせど永東画アオ暮着一かけてお在県ラヘネシ公学ぶ月演も降約ムク本7科ヒミ時優ムエツケ済掲ぼ働名ヲケ皇千セリウ著真コ質七俊こルンほ。最ほつトゆ月昇6時ニスレ車全5口えぴ能土ハメ思案近ざ稿象ねでな自36七俊宇油48投ぐ放査続ぼん。育てフわ手了王猶クくでッ条有博躍ッ祭核れへびぞ利末しぶりぞ着物わをご記年ク呆権ヨ場市ろ態径猶ど。"	},
-// 	{
-// 		articleName: 'แนะนำเว็บฝึกฟังฟังภาษาญี่ปุ่น',
-//         createdDate:2024-10-16,
-//         updatedDate:2024-10-16,
-//         articleThumbnailLink:'https://res.cloudinary.com/dhwgh6rof/image/upload/v1729070055/Article_3_prenn4.png://res.cloudinary.com/dhwgh6rof/image/upload/v1729070055/Article_1_n9qdxo.png',
-//         articleDetails:"具岡ナ打遺ふきっド一香シタ岡東本もねぱラ必群あクづ図海ごげレ異公べ法制じて教願ゃ羽業し販隆画シノ水既杉た。聞ウキケヤ集版ラ蛮房ラ面認ヲ属制3済トク貢父テチ券健まわきで相29内メ聞号タソ華地そ玉季力壁周ク。蔵修フカノス棋視ト者安イマ景4会や生12編リ記個んッぶち代悦ヱカ内緊ワイモウ完北今はらつ戦霊条稲べきせふ。声芸ユ佐現ヤルムタ島講一めたほね豊我で費齢のえ集退ほンが捜外クワスル佑中ツ政直転れさぞわ掲道提狙タユフ情未ヲ欧1公トメハタ提縫が経根むげ本各遺拡あわしが。為させ衝供85牟チ図謙シコヤ後経むーさ員南やふでざ劣情げさず避産動追家なー止1生れリゆ災数外使ず。場コ伏3場か者受ク社覧ミヲ航件じリさは会能ヌソ社9大シ約覚けじレ田激わンぐく引図ワサソヌ読串剱せたごわ。発小メハヌエ自含スチ博明ゅづ願伊ル認際えッせ議広止ニセクヤ光影8権へぐ芸勝つゆイン強野レクワ報1遅カヨリ任覚鳥ナケユム可割ちどずの提子る敗読ウチ軽喰杜椿へ。回まふょべ本8比現ひる著窓い盤4取中ご男放岡吉コセユヒ居権ゅ大彦み季錦亮凱孫敦ゅル。応アセ天討やしクも晴料リヌ敬各で粉希フムハチ皇料ら寝微ヤワフ面万イメニウ指向ぱ導堀ヱワ補明まぜべ後表ぐ和10挑懐ひね。 稿ユヘカツ寒問テウヤノ首球社ヲ必上つ暴岡トけた端体ソコロケ兵統テヱロモ家付がけち北索こ投17前守9産とまリ者本挑まおと辺場召喝か。合や顧外クハ名難間ヨ町外コスアモ変多レぶひ守要サタ識56前守7近もやてざ護覧ラくやた供禁ぞほゆ条介少マロニ救日ケユヌ現職クひき鳥困リびとは。女飛スイヱノ天川み任過も月始題トミケ変6北ま声西エヱメハ陸読はにざリ会覧づッ業政ヘモ制盛後談とつきこ事座体歩渡っやリき。賢次ねこし伎由あ書責エカ目題索ぐげうも今量トネメイ友4上ヒメタレ掲歩がおぜど映民ひ激気どだひ村来マコ月般ソサク青弱れ高筆ぐ。訪カルタフ言書属ド電掲ほの経湧オス広容てひに消経クけきじ私断レ患半ミ載話コヱタヨ無市図ッせイ興52東ぼざ図画め氏願リざぽげ。善車ミレヌ浅7出マヌ回18済ワヒリ情2秋ワニムキ品名事ちさぜ感折震ろしラ奥鳥よリこて躍賞求制びード。区ネ競70誌棋けじ男刊レノヨミ浸験ゅぞりつ野占発出みわと変6旅ぐ刺百れまば止橋徳伴飯ルせあ。9日8京ヌモ日井ソヒユセ購止し獲断せがドぴ載活ヨ載検フメネホ全左タケヤ授毎げ必欠サネヨ安田町開イざう政抑垣猛でん。件んず命選レワ以下イタロ攻村て映詳得糖スレソ析会ぎが税野くが際理校スかろと前末ニ傷東新享凡ひ。英はびフ出祉タウニ税4迅ぜに夜南ヌサネミ津象ラ医事ムソハ居区むぎづ人8坊ゆイち第円図ねでルド神内マタユチ束般ラチニホ子氷班綸諮クてみ。50回ムソ応残野経ほの支投べき場敗ぜ低与ワセスヤ生宇義すしわず破員ラ航工ロヱ紙車ラい政4条到べやみつ行標婦項漏ょ。他ぎみ価社せ図団をでの佳件たぼやへ私両がるもう握議住シウク印供ルヱモソ校26型のしてず識幹ゃら側国皇ウキミロ連民別ヌ処差転ヘ自豪棋儀未ぎみ。放聞てゃざ芸約ソリカキ肉由をンゃ国局フ長絶リトニヌ究手セスヌニ作康着ヘラ野万ユ畑社ぽ婦遺コナネヨ措65月ニアメ加京建イリコ精恐飲こクく。自ごフ食傷メ考進ご井旧のッぽ愛行降ラじばぐ第3周健ノメヲ込5族づ計直すっ共台ばさずゃ正車キロニラ企料多リラお。2門テケカト追収きづ接以んね応室年みかけ善7覧メヘ内閉メアス開魔とる治時愛も断改戦と賞変練誌さレル。 国いた学高ずおじ緩噤読ラ月初そみつフ森索セレヲミ倉統なむうぎ到物善けざ懲愛早黙報でせー質陽えめ合今ハイツシ表人ヒキニミ用見ま選日みそ感普ろル。講ウリヱ交型ハ所68議ユルムメ的委テハカソ問下賞ほろッぎ場巨ヲルムヱ条31叫ぴもぎ合46力トニウ売志わス問柏沼烈レとるそ。入サミキハ自世を益猛うドリて上速りだ任着クツユウ円英こ火出申っ先続クスノ語渡ツコヒエ会学風次クミ射13潤すめク応昇試連隊あさ。 芸ぶで難修タ指八けぱせど永東画アオ暮着一かけてお在県ラヘネシ公学ぶ月演も降約ムク本7科ヒミ時優ムエツケ済掲ぼ働名ヲケ皇千セリウ著真コ質七俊こルンほ。最ほつトゆ月昇6時ニスレ車全5口えぴ能土ハメ思案近ざ稿象ねでな自36七俊宇油48投ぐ放査続ぼん。育てフわ手了王猶クくでッ条有博躍ッ祭核れへびぞ利末しぶりぞ着物わをご記年ク呆権ヨ場市ろ態径猶ど。"	},
-// 	{
-// 		articleName: '15 ไวยากรณ์ออกสอบบ่อย JLPT N4',
-//         createdDate:2024-10-16,
-//         updatedDate:2024-10-16,
-//         articleThumbnailLink:'hhttps://res.cloudinary.com/dhwgh6rof/image/upload/v1729070056/Article_2_jasnlp.pngttps://res.cloudinary.com/dhwgh6rof/image/upload/v1729070055/Article_1_n9qdxo.png',
-//         articleDetails:"具岡ナ打遺ふきっド一香シタ岡東本もねぱラ必群あクづ図海ごげレ異公べ法制じて教願ゃ羽業し販隆画シノ水既杉た。聞ウキケヤ集版ラ蛮房ラ面認ヲ属制3済トク貢父テチ券健まわきで相29内メ聞号タソ華地そ玉季力壁周ク。蔵修フカノス棋視ト者安イマ景4会や生12編リ記個んッぶち代悦ヱカ内緊ワイモウ完北今はらつ戦霊条稲べきせふ。声芸ユ佐現ヤルムタ島講一めたほね豊我で費齢のえ集退ほンが捜外クワスル佑中ツ政直転れさぞわ掲道提狙タユフ情未ヲ欧1公トメハタ提縫が経根むげ本各遺拡あわしが。為させ衝供85牟チ図謙シコヤ後経むーさ員南やふでざ劣情げさず避産動追家なー止1生れリゆ災数外使ず。場コ伏3場か者受ク社覧ミヲ航件じリさは会能ヌソ社9大シ約覚けじレ田激わンぐく引図ワサソヌ読串剱せたごわ。発小メハヌエ自含スチ博明ゅづ願伊ル認際えッせ議広止ニセクヤ光影8権へぐ芸勝つゆイン強野レクワ報1遅カヨリ任覚鳥ナケユム可割ちどずの提子る敗読ウチ軽喰杜椿へ。回まふょべ本8比現ひる著窓い盤4取中ご男放岡吉コセユヒ居権ゅ大彦み季錦亮凱孫敦ゅル。応アセ天討やしクも晴料リヌ敬各で粉希フムハチ皇料ら寝微ヤワフ面万イメニウ指向ぱ導堀ヱワ補明まぜべ後表ぐ和10挑懐ひね。 稿ユヘカツ寒問テウヤノ首球社ヲ必上つ暴岡トけた端体ソコロケ兵統テヱロモ家付がけち北索こ投17前守9産とまリ者本挑まおと辺場召喝か。合や顧外クハ名難間ヨ町外コスアモ変多レぶひ守要サタ識56前守7近もやてざ護覧ラくやた供禁ぞほゆ条介少マロニ救日ケユヌ現職クひき鳥困リびとは。女飛スイヱノ天川み任過も月始題トミケ変6北ま声西エヱメハ陸読はにざリ会覧づッ業政ヘモ制盛後談とつきこ事座体歩渡っやリき。賢次ねこし伎由あ書責エカ目題索ぐげうも今量トネメイ友4上ヒメタレ掲歩がおぜど映民ひ激気どだひ村来マコ月般ソサク青弱れ高筆ぐ。訪カルタフ言書属ド電掲ほの経湧オス広容てひに消経クけきじ私断レ患半ミ載話コヱタヨ無市図ッせイ興52東ぼざ図画め氏願リざぽげ。善車ミレヌ浅7出マヌ回18済ワヒリ情2秋ワニムキ品名事ちさぜ感折震ろしラ奥鳥よリこて躍賞求制びード。区ネ競70誌棋けじ男刊レノヨミ浸験ゅぞりつ野占発出みわと変6旅ぐ刺百れまば止橋徳伴飯ルせあ。9日8京ヌモ日井ソヒユセ購止し獲断せがドぴ載活ヨ載検フメネホ全左タケヤ授毎げ必欠サネヨ安田町開イざう政抑垣猛でん。件んず命選レワ以下イタロ攻村て映詳得糖スレソ析会ぎが税野くが際理校スかろと前末ニ傷東新享凡ひ。英はびフ出祉タウニ税4迅ぜに夜南ヌサネミ津象ラ医事ムソハ居区むぎづ人8坊ゆイち第円図ねでルド神内マタユチ束般ラチニホ子氷班綸諮クてみ。50回ムソ応残野経ほの支投べき場敗ぜ低与ワセスヤ生宇義すしわず破員ラ航工ロヱ紙車ラい政4条到べやみつ行標婦項漏ょ。他ぎみ価社せ図団をでの佳件たぼやへ私両がるもう握議住シウク印供ルヱモソ校26型のしてず識幹ゃら側国皇ウキミロ連民別ヌ処差転ヘ自豪棋儀未ぎみ。放聞てゃざ芸約ソリカキ肉由をンゃ国局フ長絶リトニヌ究手セスヌニ作康着ヘラ野万ユ畑社ぽ婦遺コナネヨ措65月ニアメ加京建イリコ精恐飲こクく。自ごフ食傷メ考進ご井旧のッぽ愛行降ラじばぐ第3周健ノメヲ込5族づ計直すっ共台ばさずゃ正車キロニラ企料多リラお。2門テケカト追収きづ接以んね応室年みかけ善7覧メヘ内閉メアス開魔とる治時愛も断改戦と賞変練誌さレル。 国いた学高ずおじ緩噤読ラ月初そみつフ森索セレヲミ倉統なむうぎ到物善けざ懲愛早黙報でせー質陽えめ合今ハイツシ表人ヒキニミ用見ま選日みそ感普ろル。講ウリヱ交型ハ所68議ユルムメ的委テハカソ問下賞ほろッぎ場巨ヲルムヱ条31叫ぴもぎ合46力トニウ売志わス問柏沼烈レとるそ。入サミキハ自世を益猛うドリて上速りだ任着クツユウ円英こ火出申っ先続クスノ語渡ツコヒエ会学風次クミ射13潤すめク応昇試連隊あさ。 芸ぶで難修タ指八けぱせど永東画アオ暮着一かけてお在県ラヘネシ公学ぶ月演も降約ムク本7科ヒミ時優ムエツケ済掲ぼ働名ヲケ皇千セリウ著真コ質七俊こルンほ。最ほつトゆ月昇6時ニスレ車全5口えぴ能土ハメ思案近ざ稿象ねでな自36七俊宇油48投ぐ放査続ぼん。育てフわ手了王猶クくでッ条有博躍ッ祭核れへびぞ利末しぶりぞ着物わをご記年ク呆権ヨ場市ろ態径猶ど。"	},
-// ]
+const articleData = [
+  {
+    articleName: 'แนะนำเว็บฝึกสำเนียงภาษาญี่ปุ่น',
+    articleDetails: "具岡ナ打遺ふきっド一香シタ岡東本もねぱラ必群あクづ図海ごげレ異公べ法制じて教願ゃ羽業し販隆画シノ水既杉た。...",
+    articleThumbnailLink: 'https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566173/Article_4_lrnmnf.jpg',
+    category:"JLPTN4"
+  },
+  {
+    articleName: 'แนะนำเว็บฝึกฟังฟังภาษาญี่ปุ่น',
+    articleDetails: "具岡ナ打遺ふきっド一香シタ岡東本もねぱラ必群あクづ図海ごげレ異公べ法制じて教願ゃ羽業し販隆画シノ水既杉た。...",
+    articleThumbnailLink: 'https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566179/Article_6_bohvwq.png',
+    category:"JLPTN4"
+  },
+  {
+    articleName: '15 ไวยากรณ์ออกสอบบ่อย JLPT N4',
+    articleDetails: "具岡ナ打遺ふきっド一香シタ岡東本もねぱラ必群あクづ図海ごげレ異公べ法制じて教願ゃ羽業し販隆画シノ水既杉た。...",
+    articleThumbnailLink: 'https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566178/Article_3_ch85fk.png',
+    category:"JLPTN5"
+  },
+]
 
+const courseData = [
+  {
+    courseName: "JLPT N5 Comprehensive Course",
+    shortDescription: "Complete preparation for JLPT N5",
+    longDescription: "This course covers all aspects of JLPT N5 including grammar, vocabulary, reading, and listening...",
+    courseThumbnailLink: "https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566234/JLPT_N3_vvfhml.png",
+    price: 2999.99,
+    category:"JLPTN5",
+    units: [
+      { unitNumber: 1, title: "Basic Greetings", description: "Learn everyday Japanese greetings", youtubeLink: "https://www.youtube.com/watch?v=msGQOO6f3h0" },
+      { unitNumber: 2, title: "Hiragana Mastery", description: "Master the Hiragana writing system", youtubeLink: "https://www.youtube.com/watch?v=H2fRcQquKsA" },
+    ]
+  },
+  {
+    courseName: "JLPT N4 Grammar Intensive",
+    shortDescription: "Focused grammar preparation for JLPT N4",
+    longDescription: "Deep dive into JLPT N4 level grammar points with extensive examples and practice exercises...",
+    courseThumbnailLink: "https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566234/JLPT_N3_vvfhml.png",
+    price: 1999.99,
+    category:"JLPTN4",
+    units: [
+      { unitNumber: 1, title: "Te-form Mastery", description: "Understand and use the te-form confidently", youtubeLink: "https://www.youtube.com/watch?v=H2fRcQquKsA" },
+      { unitNumber: 2, title: "Potential Form", description: "Learn to express ability in Japanese", youtubeLink: "https://www.youtube.com/watch?v=msGQOO6f3h0" },
+    ]
+  }
+]
 
 async function run() {
-	await prisma.user.createMany({ data: userData })
-	// await prisma.article.createMany({ data: articleData })
+  try {
+    // Create users
+    await prisma.user.createMany({ data: userData })
+    
+    // Create articles and associate with the admin user
+    const admin = await prisma.user.findUnique({ where: { email: 'admin@gmail.com' } })
+    for (let article of articleData) {
+      await prisma.article.create({
+        data: {
+          ...article,
+          User: { connect: { id: admin.id } }
+        }
+      })
+    }
+
+    // Create courses and their units
+    for (let course of courseData) {
+      const { units, ...courseInfo } = course
+      await prisma.course.create({
+        data: {
+          ...courseInfo,
+          user: { connect: { id: admin.id } },
+          unit: {
+            createMany: {
+              data: units
+            }
+          }
+        }
+      })
+    }
+
+    console.log('Seed data inserted successfully')
+  } catch (error) {
+    console.error('Error seeding data:', error)
+  } finally {
+    await prisma.$disconnect()
+  }
 }
 
 run()

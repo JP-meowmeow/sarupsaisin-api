@@ -124,7 +124,6 @@ module.exports.getCourseDashboard = async (req, res, next) => {
         userId: id,
       },
     });
-    console.log("response hahahha", response);
     res.json({ response });
   } catch (err) {
     next(err);

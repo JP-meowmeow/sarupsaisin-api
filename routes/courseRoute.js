@@ -16,4 +16,5 @@ courseRoute.post('/createcourse',authenticate,upload.single('link'),courseContro
 courseRoute.delete('/deletecourse/:id',authenticate,courseController.deleteCourse)
 courseRoute.patch('/editcourse/:id',authenticate,upload.single('link'),courseController.updateCourse)
 
+
 module.exports =  courseRoute

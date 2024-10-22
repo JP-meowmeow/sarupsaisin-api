@@ -6,7 +6,7 @@ module.exports = async (req, res, next) => {
   try {
     const authorization = req.headers.authorization;
     if (!authorization || !authorization.startsWith("Bearer ")) {
-      createError(401, "Unauthorized");
+      createError(401, "Unauthorized 22");
     }
     const token = authorization.split(" ")[1];
     if (!token) {

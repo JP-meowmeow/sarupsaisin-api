@@ -145,20 +145,21 @@ module.exports.uploadImage = async (req, res, next) => {
     }
     // console.log("uploadResult", uploadResult.secure_url);
 
-    const { header, detail } = req.body;
+    const { header, detail,category } = req.body;
     const { id } = req.user;
 
     const result = await prisma.article.create({
       data: {
         articleName: header,
         articleDetails: detail,
+        category:category,
         articleThumbnailLink: uploadResult.secure_url,
         userId: id,
       },
     });
     // console.log("result", result);
 
-    res.json({ message: "hi" });
+    res.json({ message: "created article successfully" });
   } catch (err) {
     next(err);
   }
