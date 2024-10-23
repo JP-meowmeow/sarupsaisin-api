@@ -89,12 +89,27 @@ module.exports.createCourse = async (req, res, next) => {
 module.exports.deleteCourse = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const response = await prisma.course.delete({
+
+    await prisma.enrollment.deleteMany({
+      where: {
+        courseId: +id
+      }
+    });
+
+    await prisma.unit.deleteMany({
+      where: {
+        courseId: +id
+      }
+    });
+
+    await prisma.course.delete({
       where: {
         id: +id,
       },
     });
+
     res.json({ message: "delete course complete" });
+    
   } catch (err) {
     next(err);
   }

@@ -14,19 +14,70 @@ const userData = [
 
 const articleData = [
   {
-    articleName: 'แนะนำเว็บฝึกสำเนียงภาษาญี่ปุ่น',
+    articleName: 'แนะนำเว็บฝึกสำเนียงภาษาญี่ปุ่น 1',
     articleDetails: "具岡ナ打遺ふきっド一香シタ岡東本もねぱラ必群あクづ図海ごげレ異公べ法制じて教願ゃ羽業し販隆画シノ水既杉た。...",
     articleThumbnailLink: 'https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566173/Article_4_lrnmnf.jpg',
     category:"JLPTN4"
   },
   {
-    articleName: 'แนะนำเว็บฝึกฟังฟังภาษาญี่ปุ่น',
+    articleName: 'แนะนำเว็บฝึกฟังฟังภาษาญี่ปุ่น 1',
     articleDetails: "具岡ナ打遺ふきっド一香シタ岡東本もねぱラ必群あクづ図海ごげレ異公べ法制じて教願ゃ羽業し販隆画シノ水既杉た。...",
     articleThumbnailLink: 'https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566179/Article_6_bohvwq.png',
     category:"JLPTN4"
   },
   {
-    articleName: '15 ไวยากรณ์ออกสอบบ่อย JLPT N4',
+    articleName: '15 ไวยากรณ์ออกสอบบ่อย JLPT N4 1',
+    articleDetails: "具岡ナ打遺ふきっド一香シタ岡東本もねぱラ必群あクづ図海ごげレ異公べ法制じて教願ゃ羽業し販隆画シノ水既杉た。...",
+    articleThumbnailLink: 'https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566178/Article_3_ch85fk.png',
+    category:"JLPTN5"
+  },{
+    articleName: 'แนะนำเว็บฝึกสำเนียงภาษาญี่ปุ่น 2',
+    articleDetails: "具岡ナ打遺ふきっド一香シタ岡東本もねぱラ必群あクづ図海ごげレ異公べ法制じて教願ゃ羽業し販隆画シノ水既杉た。...",
+    articleThumbnailLink: 'https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566173/Article_4_lrnmnf.jpg',
+    category:"JLPTN4"
+  },
+  {
+    articleName: 'แนะนำเว็บฝึกฟังฟังภาษาญี่ปุ่น 2',
+    articleDetails: "具岡ナ打遺ふきっド一香シタ岡東本もねぱラ必群あクづ図海ごげレ異公べ法制じて教願ゃ羽業し販隆画シノ水既杉た。...",
+    articleThumbnailLink: 'https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566179/Article_6_bohvwq.png',
+    category:"JLPTN4"
+  },
+  {
+    articleName: '15 ไวยากรณ์ออกสอบบ่อย JLPT N4 2',
+    articleDetails: "具岡ナ打遺ふきっド一香シタ岡東本もねぱラ必群あクづ図海ごげレ異公べ法制じて教願ゃ羽業し販隆画シノ水既杉た。...",
+    articleThumbnailLink: 'https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566178/Article_3_ch85fk.png',
+    category:"JLPTN5"
+  },{
+    articleName: 'แนะนำเว็บฝึกสำเนียงภาษาญี่ปุ่น 3',
+    articleDetails: "具岡ナ打遺ふきっド一香シタ岡東本もねぱラ必群あクづ図海ごげレ異公べ法制じて教願ゃ羽業し販隆画シノ水既杉た。...",
+    articleThumbnailLink: 'https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566173/Article_4_lrnmnf.jpg',
+    category:"JLPTN4"
+  },
+  {
+    articleName: 'แนะนำเว็บฝึกฟังฟังภาษาญี่ปุ่น 4',
+    articleDetails: "具岡ナ打遺ふきっド一香シタ岡東本もねぱラ必群あクづ図海ごげレ異公べ法制じて教願ゃ羽業し販隆画シノ水既杉た。...",
+    articleThumbnailLink: 'https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566179/Article_6_bohvwq.png',
+    category:"JLPTN4"
+  },
+  {
+    articleName: '15 ไวยากรณ์ออกสอบบ่อย JLPT N4 5',
+    articleDetails: "具岡ナ打遺ふきっド一香シタ岡東本もねぱラ必群あクづ図海ごげレ異公べ法制じて教願ゃ羽業し販隆画シノ水既杉た。...",
+    articleThumbnailLink: 'https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566178/Article_3_ch85fk.png',
+    category:"JLPTN5"
+  },{
+    articleName: 'แนะนำเว็บฝึกสำเนียงภาษาญี่ปุ่น 6',
+    articleDetails: "具岡ナ打遺ふきっド一香シタ岡東本もねぱラ必群あクづ図海ごげレ異公べ法制じて教願ゃ羽業し販隆画シノ水既杉た。...",
+    articleThumbnailLink: 'https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566173/Article_4_lrnmnf.jpg',
+    category:"JLPTN4"
+  },
+  {
+    articleName: 'แนะนำเว็บฝึกฟังฟังภาษาญี่ปุ่น 7',
+    articleDetails: "具岡ナ打遺ふきっド一香シタ岡東本もねぱラ必群あクづ図海ごげレ異公べ法制じて教願ゃ羽業し販隆画シノ水既杉た。...",
+    articleThumbnailLink: 'https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566179/Article_6_bohvwq.png',
+    category:"JLPTN4"
+  },
+  {
+    articleName: '15 ไวยากรณ์ออกสอบบ่อย JLPT N4 8',
     articleDetails: "具岡ナ打遺ふきっド一香シタ岡東本もねぱラ必群あクづ図海ごげレ異公べ法制じて教願ゃ羽業し販隆画シノ水既杉た。...",
     articleThumbnailLink: 'https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566178/Article_3_ch85fk.png',
     category:"JLPTN5"
@@ -35,29 +86,158 @@ const articleData = [
 
 const courseData = [
   {
-    courseName: "JLPT N5 Comprehensive Course",
+    courseName: "JLPT N5 Comprehensive Course 1",
     shortDescription: "Complete preparation for JLPT N5",
     longDescription: "This course covers all aspects of JLPT N5 including grammar, vocabulary, reading, and listening...",
     courseThumbnailLink: "https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566234/JLPT_N3_vvfhml.png",
     price: 2999.99,
     category:"JLPTN5",
+    isFree:"NOTFREE",
     units: [
       { unitNumber: 1, title: "Basic Greetings", description: "Learn everyday Japanese greetings", youtubeLink: "https://www.youtube.com/watch?v=msGQOO6f3h0" },
       { unitNumber: 2, title: "Hiragana Mastery", description: "Master the Hiragana writing system", youtubeLink: "https://www.youtube.com/watch?v=H2fRcQquKsA" },
     ]
   },
   {
-    courseName: "JLPT N4 Grammar Intensive",
+    courseName: "JLPT N4 Grammar Intensive 2",
     shortDescription: "Focused grammar preparation for JLPT N4",
     longDescription: "Deep dive into JLPT N4 level grammar points with extensive examples and practice exercises...",
     courseThumbnailLink: "https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566234/JLPT_N3_vvfhml.png",
     price: 1999.99,
     category:"JLPTN4",
+    isFree:"NOTFREE",
     units: [
       { unitNumber: 1, title: "Te-form Mastery", description: "Understand and use the te-form confidently", youtubeLink: "https://www.youtube.com/watch?v=H2fRcQquKsA" },
       { unitNumber: 2, title: "Potential Form", description: "Learn to express ability in Japanese", youtubeLink: "https://www.youtube.com/watch?v=msGQOO6f3h0" },
     ]
-  }
+  },
+  {
+    courseName: "JLPT N4 Free course3 ",
+    shortDescription: "Focused on preparation for JLPT N4 test",
+    longDescription: "Deep dive into JLPT N4 level grammar points with extensive examples and practice exercises...",
+    courseThumbnailLink: "https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566234/JLPT_N3_vvfhml.png",
+    price: 0,
+    category:"JLPTN4",
+    isFree:"FREE",
+    units: [
+      { unitNumber: 1, title: "Te-form Mastery", description: "Understand and use the te-form confidently", youtubeLink: "https://www.youtube.com/watch?v=H2fRcQquKsA" },
+      { unitNumber: 2, title: "Potential Form", description: "Learn to express ability in Japanese", youtubeLink: "https://www.youtube.com/watch?v=msGQOO6f3h0" },
+    ]
+  },{
+    courseName: "JLPT N5 Comprehensive Course 4",
+    shortDescription: "Complete preparation for JLPT N5",
+    longDescription: "This course covers all aspects of JLPT N5 including grammar, vocabulary, reading, and listening...",
+    courseThumbnailLink: "https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566234/JLPT_N3_vvfhml.png",
+    price: 2999.99,
+    category:"JLPTN5",
+    isFree:"NOTFREE",
+    units: [
+      { unitNumber: 1, title: "Basic Greetings", description: "Learn everyday Japanese greetings", youtubeLink: "https://www.youtube.com/watch?v=msGQOO6f3h0" },
+      { unitNumber: 2, title: "Hiragana Mastery", description: "Master the Hiragana writing system", youtubeLink: "https://www.youtube.com/watch?v=H2fRcQquKsA" },
+    ]
+  },
+  {
+    courseName: "JLPT N4 Grammar Intensive 5",
+    shortDescription: "Focused grammar preparation for JLPT N4",
+    longDescription: "Deep dive into JLPT N4 level grammar points with extensive examples and practice exercises...",
+    courseThumbnailLink: "https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566234/JLPT_N3_vvfhml.png",
+    price: 1999.99,
+    category:"JLPTN4",
+    isFree:"NOTFREE",
+    units: [
+      { unitNumber: 1, title: "Te-form Mastery", description: "Understand and use the te-form confidently", youtubeLink: "https://www.youtube.com/watch?v=H2fRcQquKsA" },
+      { unitNumber: 2, title: "Potential Form", description: "Learn to express ability in Japanese", youtubeLink: "https://www.youtube.com/watch?v=msGQOO6f3h0" },
+    ]
+  },
+  {
+    courseName: "JLPT N4 Free course 6",
+    shortDescription: "Focused on preparation for JLPT N4 test",
+    longDescription: "Deep dive into JLPT N4 level grammar points with extensive examples and practice exercises...",
+    courseThumbnailLink: "https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566234/JLPT_N3_vvfhml.png",
+    price: 0,
+    category:"JLPTN4",
+    isFree:"FREE",
+    units: [
+      { unitNumber: 1, title: "Te-form Mastery", description: "Understand and use the te-form confidently", youtubeLink: "https://www.youtube.com/watch?v=H2fRcQquKsA" },
+      { unitNumber: 2, title: "Potential Form", description: "Learn to express ability in Japanese", youtubeLink: "https://www.youtube.com/watch?v=msGQOO6f3h0" },
+    ]
+  },{
+    courseName: "JLPT N5 Comprehensive Course 7",
+    shortDescription: "Complete preparation for JLPT N5",
+    longDescription: "This course covers all aspects of JLPT N5 including grammar, vocabulary, reading, and listening...",
+    courseThumbnailLink: "https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566234/JLPT_N3_vvfhml.png",
+    price: 2999.99,
+    category:"JLPTN5",
+    isFree:"NOTFREE",
+    units: [
+      { unitNumber: 1, title: "Basic Greetings", description: "Learn everyday Japanese greetings", youtubeLink: "https://www.youtube.com/watch?v=msGQOO6f3h0" },
+      { unitNumber: 2, title: "Hiragana Mastery", description: "Master the Hiragana writing system", youtubeLink: "https://www.youtube.com/watch?v=H2fRcQquKsA" },
+    ]
+  },
+  {
+    courseName: "JLPT N4 Grammar Intensive 8 ",
+    shortDescription: "Focused grammar preparation for JLPT N4",
+    longDescription: "Deep dive into JLPT N4 level grammar points with extensive examples and practice exercises...",
+    courseThumbnailLink: "https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566234/JLPT_N3_vvfhml.png",
+    price: 1999.99,
+    category:"JLPTN4",
+    isFree:"NOTFREE",
+    units: [
+      { unitNumber: 1, title: "Te-form Mastery", description: "Understand and use the te-form confidently", youtubeLink: "https://www.youtube.com/watch?v=H2fRcQquKsA" },
+      { unitNumber: 2, title: "Potential Form", description: "Learn to express ability in Japanese", youtubeLink: "https://www.youtube.com/watch?v=msGQOO6f3h0" },
+    ]
+  },
+  {
+    courseName: "JLPT N4 Free course 9 ",
+    shortDescription: "Focused on preparation for JLPT N4 test",
+    longDescription: "Deep dive into JLPT N4 level grammar points with extensive examples and practice exercises...",
+    courseThumbnailLink: "https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566234/JLPT_N3_vvfhml.png",
+    price: 0,
+    category:"JLPTN4",
+    isFree:"FREE",
+    units: [
+      { unitNumber: 1, title: "Te-form Mastery", description: "Understand and use the te-form confidently", youtubeLink: "https://www.youtube.com/watch?v=H2fRcQquKsA" },
+      { unitNumber: 2, title: "Potential Form", description: "Learn to express ability in Japanese", youtubeLink: "https://www.youtube.com/watch?v=msGQOO6f3h0" },
+    ]
+  },{
+    courseName: "JLPT N5 Comprehensive Course 10 ",
+    shortDescription: "Complete preparation for JLPT N5",
+    longDescription: "This course covers all aspects of JLPT N5 including grammar, vocabulary, reading, and listening...",
+    courseThumbnailLink: "https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566234/JLPT_N3_vvfhml.png",
+    price: 2999.99,
+    category:"JLPTN5",
+    isFree:"NOTFREE",
+    units: [
+      { unitNumber: 1, title: "Basic Greetings", description: "Learn everyday Japanese greetings", youtubeLink: "https://www.youtube.com/watch?v=msGQOO6f3h0" },
+      { unitNumber: 2, title: "Hiragana Mastery", description: "Master the Hiragana writing system", youtubeLink: "https://www.youtube.com/watch?v=H2fRcQquKsA" },
+    ]
+  },
+  {
+    courseName: "JLPT N4 Grammar Intensive 11",
+    shortDescription: "Focused grammar preparation for JLPT N4",
+    longDescription: "Deep dive into JLPT N4 level grammar points with extensive examples and practice exercises...",
+    courseThumbnailLink: "https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566234/JLPT_N3_vvfhml.png",
+    price: 1999.99,
+    category:"JLPTN4",
+    isFree:"NOTFREE",
+    units: [
+      { unitNumber: 1, title: "Te-form Mastery", description: "Understand and use the te-form confidently", youtubeLink: "https://www.youtube.com/watch?v=H2fRcQquKsA" },
+      { unitNumber: 2, title: "Potential Form", description: "Learn to express ability in Japanese", youtubeLink: "https://www.youtube.com/watch?v=msGQOO6f3h0" },
+    ]
+  },
+  {
+    courseName: "JLPT N4 Free course 12",
+    shortDescription: "Focused on preparation for JLPT N4 test",
+    longDescription: "Deep dive into JLPT N4 level grammar points with extensive examples and practice exercises...",
+    courseThumbnailLink: "https://res.cloudinary.com/dhwgh6rof/image/upload/v1729566234/JLPT_N3_vvfhml.png",
+    price: 0,
+    category:"JLPTN4",
+    isFree:"FREE",
+    units: [
+      { unitNumber: 1, title: "Te-form Mastery", description: "Understand and use the te-form confidently", youtubeLink: "https://www.youtube.com/watch?v=H2fRcQquKsA" },
+      { unitNumber: 2, title: "Potential Form", description: "Learn to express ability in Japanese", youtubeLink: "https://www.youtube.com/watch?v=msGQOO6f3h0" },
+    ]
+  },
 ]
 
 async function run() {

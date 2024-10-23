@@ -14,16 +14,18 @@ datasource db {
 }
 
 model User {
-  id             Int          @id @default(autoincrement())
-  email          String       @unique
-  password       String?
-  role           roles        @default(USER)
-  enabled        Boolean      @default(true)
-  createdAt      DateTime     @default(now())
-  updatedAt      DateTime     @updatedAt
-  createdArticle Article[]
-  createdCourse  Course[]
-  enrollments    Enrollment[]
+  id                   Int          @id @default(autoincrement())
+  email                String       @unique
+  password             String?
+  resetPasswordToken   String?      @unique
+  resetPasswordExpires DateTime?
+  role                 roles        @default(USER)
+  enabled              Boolean      @default(true)
+  createdAt            DateTime     @default(now())
+  updatedAt            DateTime     @updatedAt
+  createdArticle       Article[]
+  createdCourse        Course[]
+  enrollments          Enrollment[]
 }
 
 model Enrollment {
@@ -74,6 +76,7 @@ model Course {
   courseThumbnailLink String
   price               Decimal      @db.Decimal(10, 2)
   sold                Int?         @default(0)
+  isFree              isCourseFree
   createdAt           DateTime     @default(now())
   updatedAt           DateTime     @updatedAt
   category            categories   @default(JLPTN4)
@@ -81,6 +84,11 @@ model Course {
   userId              Int?
   unit                Unit[]
   Enrollment          Enrollment[]
+}
+
+enum isCourseFree {
+  FREE
+  NOTFREE
 }
 
 model Unit {
