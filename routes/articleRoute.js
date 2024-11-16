@@ -3,6 +3,7 @@ const articleRoute = express.Router();
 const articleController = require("../controllers/articleController");
 const upload = require("../middlewares/upload");
 const authenticate = require("../middlewares/authenticate");
+const isAdmin = require('../middlewares/isAdmin')
 
 //article in showpage
 articleRoute.get('/getallarticle',articleController.getAllArticles); // show in article page
@@ -14,10 +15,10 @@ articleRoute.get('/getarticledashboard',authenticate,articleController.getArticl
 
 
 //article create update delete 
-articleRoute.post("/uploadimage",authenticate,upload.single('link'), articleController.uploadImage);
-articleRoute.get('/getarticle/edit/:id',articleController.getEditArticle)//getdata for edit page
-articleRoute.patch('/updatearticle/:id',authenticate,upload.single('link'),articleController.updateArticle)// edit article
-articleRoute.delete('/deletearticle/:id',authenticate,articleController.deleteArticle)// delete article
+articleRoute.post("/uploadimage",authenticate,isAdmin,upload.single('link'), articleController.uploadImage);
+articleRoute.get('/getarticle/edit/:id',authenticate,isAdmin,articleController.getEditArticle)//getdata for edit page
+articleRoute.patch('/updatearticle/:id',authenticate,isAdmin,upload.single('link'),articleController.updateArticle)// edit article
+articleRoute.delete('/deletearticle/:id',authenticate,isAdmin,articleController.deleteArticle)// delete article
 
 
 

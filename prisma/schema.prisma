@@ -26,6 +26,7 @@ model User {
   createdArticle       Article[]
   createdCourse        Course[]
   enrollments          Enrollment[]
+  favorites            Favorite[]
 }
 
 model Enrollment {
@@ -37,6 +38,14 @@ model Enrollment {
   slipLink   String
   status     status   @default(PENDING)
   enrolledAt DateTime @default(now()) // When the user purchased the course
+}
+
+model Favorite {
+  id        Int      @id @default(autoincrement())
+  user      User?    @relation(fields: [userId], references: [id])
+  userId    Int?
+  article   Article? @relation(fields: [articleId], references: [id])
+  articleId Int?
 }
 
 enum status {
@@ -59,6 +68,7 @@ model Article {
   category             categories @default(JLPTN4)
   User                 User?      @relation(fields: [userId], references: [id])
   userId               Int?
+  favorites            Favorite[]
 }
 
 enum categories {

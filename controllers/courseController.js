@@ -56,17 +56,19 @@ module.exports.createCourse = async (req, res, next) => {
       fs.unlink(req.file.path);
     }
 
-    const { courseName, shortDescription, longDescription, price, units } = req.body;
+    const { courseName, shortDescription, longDescription, price, units,isFree } = req.body;
+    const {id} = req.user
     const parsedUnits = JSON.parse(units);
     const numericPrice = parseFloat(price);
     const result = await prisma.course.create({
       data: {
+        userId:id,
         courseName: courseName,
         shortDescription: shortDescription,
         longDescription: longDescription,
         price: numericPrice,
         courseThumbnailLink: uploadResult.secure_url,
-        // user: req.user ? { connect: { id: req.user.id } } : undefined,
+        isFree:isFree,
         unit: {
           create: parsedUnits.map((unit) => ({
             unitNumber: unit.unitNumber,

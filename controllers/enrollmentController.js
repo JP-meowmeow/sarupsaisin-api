@@ -9,6 +9,7 @@ module.exports.isBuy = async (req, res, next) => {
       where: {
         courseId: +id,
         userId: user.id,
+        status:'DONE'
       },
     });
     res.json(result);
