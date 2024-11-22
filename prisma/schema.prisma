@@ -27,6 +27,8 @@ model User {
   createdCourse        Course[]
   enrollments          Enrollment[]
   favorites            Favorite[]
+
+   @@map("user")
 }
 
 model Enrollment {
@@ -38,6 +40,8 @@ model Enrollment {
   slipLink   String
   status     status   @default(PENDING)
   enrolledAt DateTime @default(now()) // When the user purchased the course
+
+   @@map("enrollment")
 }
 
 model Favorite {
@@ -46,11 +50,14 @@ model Favorite {
   userId    Int?
   article   Article? @relation(fields: [articleId], references: [id])
   articleId Int?
+
+   @@map("favorite")
 }
 
 enum status {
   PENDING
   DONE
+
 }
 
 enum roles {
@@ -96,6 +103,8 @@ model Course {
   userId              Int?
   unit                Unit[]
   Enrollment          Enrollment[]
+
+   @@map("course")
 }
 
 enum isCourseFree {
@@ -112,4 +121,7 @@ model Unit {
 
   Course   Course? @relation(fields: [courseId], references: [id])
   courseId Int?
+
+
+   @@map("unit")
 }
