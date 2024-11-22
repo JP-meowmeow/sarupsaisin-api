@@ -69,6 +69,8 @@ model Article {
   User                 User?      @relation(fields: [userId], references: [id])
   userId               Int?
   favorites            Favorite[]
+
+  @@map("article")
 }
 
 enum categories {
