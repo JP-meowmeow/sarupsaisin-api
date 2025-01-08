@@ -23,6 +23,7 @@ model User {
   enabled              Boolean      @default(true)
   createdAt            DateTime     @default(now())
   updatedAt            DateTime     @updatedAt
+  dateOfBirth          String?       
   createdArticle       Article[]
   createdCourse        Course[]
   enrollments          Enrollment[]

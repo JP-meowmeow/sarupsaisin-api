@@ -23,4 +23,4 @@ app.use('/admin',adminRoute)
 app.use(error)
 app.use('*',notFound)
 
-app.listen(8000,()=>console.log('this server is running in port 8000'))
+app.listen(process.env.PORT,()=>console.log(`this server is running in port ${process.env.PORT}`))
