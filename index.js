@@ -13,6 +13,7 @@ const adminRoute = require('./routes/adminRoute')
 app.use(cors())
 app.use(express.json())
 
+// test brunch
 
 app.use('/auth',authRoute)
 app.use('/article',articleRoute)
