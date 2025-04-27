@@ -14,22 +14,23 @@ datasource db {
 }
 
 model User {
-  id                   Int          @id @default(autoincrement())
-  email                String       @unique
+  id                   Int                  @id @default(autoincrement())
+  email                String               @unique
   password             String?
-  resetPasswordToken   String?      @unique
+  resetPasswordToken   String?              @unique
   resetPasswordExpires DateTime?
-  role                 roles        @default(USER)
-  enabled              Boolean      @default(true)
-  createdAt            DateTime     @default(now())
-  updatedAt            DateTime     @updatedAt
-  dateOfBirth          String?       
+  role                 roles                @default(USER)
+  enabled              Boolean              @default(true)
+  createdAt            DateTime             @default(now())
+  updatedAt            DateTime             @updatedAt
+  dateOfBirth          String?
   createdArticle       Article[]
   createdCourse        Course[]
   enrollments          Enrollment[]
   favorites            Favorite[]
+  purchasedLevels      UserPurchasedLevel[]
 
-   @@map("user")
+  @@map("user")
 }
 
 model Enrollment {
@@ -42,7 +43,7 @@ model Enrollment {
   status     status   @default(PENDING)
   enrolledAt DateTime @default(now()) // When the user purchased the course
 
-   @@map("enrollment")
+  @@map("enrollment")
 }
 
 model Favorite {
@@ -52,13 +53,12 @@ model Favorite {
   article   Article? @relation(fields: [articleId], references: [id])
   articleId Int?
 
-   @@map("favorite")
+  @@map("favorite")
 }
 
 enum status {
   PENDING
   DONE
-
 }
 
 enum roles {
@@ -88,6 +88,65 @@ enum categories {
   OTHER
 }
 
+// JLPT Test
+
+model UserPurchasedLevel {
+  id           Int      @id @default(autoincrement())
+  userId       Int
+  jlptLevel    String // เช่น 'N5', 'N4'
+  purchaseDate DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+model JlptLevel {
+  id         Int    @id @default(autoincrement())
+  level      String @unique // เช่น 'N5', 'N4'
+  freeTestId Int? // อ้างอิงชุดข้อสอบฟรี (optional)
+
+  tests JlptTest[]
+}
+
+model JlptTest {
+  id          Int    @id @default(autoincrement())
+  jlptLevelId Int
+  name        String // ชื่อชุดข้อสอบ เช่น "N5 模擬試験 第1回"
+  price       Int // 0 = ฟรี, >0 = เสียเงิน
+
+  jlptLevel JlptLevel  @relation(fields: [jlptLevelId], references: [id])
+  questions Question[]
+}
+
+model Question {
+  id         Int    @id @default(autoincrement())
+  jlptTestId Int
+  type       String // ประเภท เช่น "vocab", "grammar", "reading"
+  content    String // เนื้อหาคำถาม
+
+  jlptTest    JlptTest      @relation(fields: [jlptTestId], references: [id])
+  choices     Choice[]
+  Explanation Explanation[]
+}
+
+model Choice {
+  id         Int     @id @default(autoincrement())
+  questionId Int
+  text       String
+  isCorrect  Boolean // true เฉพาะคำตอบที่ถูกต้อง
+
+  question Question @relation(fields: [questionId], references: [id])
+}
+
+model Explanation {
+  id         Int    @id @default(autoincrement())
+  questionId Int
+  text       String // คำอธิบายเกี่ยวกับเฉลย
+
+  question Question @relation(fields: [questionId], references: [id])
+}
+
+// course
+
 model Course {
   id                  Int          @id @default(autoincrement())
   courseName          String
@@ -105,7 +164,7 @@ model Course {
   unit                Unit[]
   Enrollment          Enrollment[]
 
-   @@map("course")
+  @@map("course")
 }
 
 enum isCourseFree {
@@ -123,6 +182,5 @@ model Unit {
   Course   Course? @relation(fields: [courseId], references: [id])
   courseId Int?
 
-
-   @@map("unit")
+  @@map("unit")
 }
