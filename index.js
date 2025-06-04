@@ -11,6 +11,7 @@ const enrollmentRoute = require("./routes/enrollmentRoute");
 const adminRoute = require("./routes/adminRoute");
 const jlptRoute = require("./routes/jlptRoute");
 
+
 app.use(cors());
 app.use(express.json());
 
