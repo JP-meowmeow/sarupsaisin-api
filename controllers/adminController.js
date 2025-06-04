@@ -1,6 +1,22 @@
 const prisma = require("../models/index");
 const createError = require("../utils/createError");
 
+
+//heartbeat checking. prevent server down
+module.exports.heartbeatChecking = async(req,res,next)=>{
+  try{
+    await prisma.user.findFirst();
+    res.status(200).send("✅ DB is alive!");
+  }
+  catch(err){
+    console.error("Heartbeat error:", error);
+    res.status(500).send("❌ DB error.");
+    next(err)
+  }
+}
+
+
+
 // wait to confirm
 module.exports.getSlipData = async (req, res, next) => {
   try {

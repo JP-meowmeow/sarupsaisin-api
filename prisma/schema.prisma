@@ -90,21 +90,32 @@ enum categories {
 
 // JLPT Test
 
+enum Level {
+  JLPTN5
+  JLPTN4
+  JLPTN3
+  JLPTN2
+  JLPTN1
+   
+}
+
 model UserPurchasedLevel {
   id           Int      @id @default(autoincrement())
   userId       Int
-  jlptLevel    String // เช่น 'N5', 'N4'
+  jlptLevel    Level
   purchaseDate DateTime @default(now())
-
   user User @relation(fields: [userId], references: [id])
+  @@map("userPurchaedLevel")
 }
 
 model JlptLevel {
   id         Int    @id @default(autoincrement())
-  level      String @unique // เช่น 'N5', 'N4'
+  level      Level @unique // เช่น 'N5', 'N4'
   freeTestId Int? // อ้างอิงชุดข้อสอบฟรี (optional)
 
   tests JlptTest[]
+
+  @@map("jpltLevel")
 }
 
 model JlptTest {
@@ -115,6 +126,8 @@ model JlptTest {
 
   jlptLevel JlptLevel  @relation(fields: [jlptLevelId], references: [id])
   questions Question[]
+
+  @@map("jpltTest")
 }
 
 model Question {
@@ -125,7 +138,9 @@ model Question {
 
   jlptTest    JlptTest      @relation(fields: [jlptTestId], references: [id])
   choices     Choice[]
-  Explanation Explanation[]
+  Explanation Explanation?
+
+  @@map("question")
 }
 
 model Choice {
@@ -135,14 +150,18 @@ model Choice {
   isCorrect  Boolean // true เฉพาะคำตอบที่ถูกต้อง
 
   question Question @relation(fields: [questionId], references: [id])
+
+  @@map("choice")
 }
 
 model Explanation {
   id         Int    @id @default(autoincrement())
-  questionId Int
+  questionId Int    @unique
   text       String // คำอธิบายเกี่ยวกับเฉลย
 
   question Question @relation(fields: [questionId], references: [id])
+
+  @@map("explanation")
 }
 
 // course
