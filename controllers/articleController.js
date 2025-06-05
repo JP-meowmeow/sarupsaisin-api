@@ -49,8 +49,6 @@ module.exports.deleteArticle = async (req, res, next) => {
   }
 };
 
-
-
 module.exports.getArticleDashboard = async (req, res, next) => {
   try {
     const { id } = req.user;
@@ -93,11 +91,28 @@ module.exports.getAllArticles = async (req, res, next) => {
   }
 };
 
-
 module.exports.updateArticle = async (req, res, next) => {
   try {
-    const {id} = req.params;
-    const { header, detail} = req.body;
+    const { id } = req.params;
+    const { header, detail } = req.body;
+    const sanitizeHtml = require("sanitize-html");
+
+    // ✅ sanitize HTML ที่ได้จาก React Quill
+    const cleanDetail = sanitizeHtml(detail, {
+      allowedTags: [
+        "b",
+        "i",
+        "u",
+        "strong",
+        "p",
+        "br",
+        "ul",
+        "ol",
+        "li",
+        "h1",
+        "h2",
+      ],
+    });
 
     const haveFile = !!req.file;
     let uploadResult = req.body.link;
@@ -109,15 +124,15 @@ module.exports.updateArticle = async (req, res, next) => {
       });
       uploadResult = result.secure_url;
       fs.unlink(req.file.path);
-    } 
+    }
 
     const result = await prisma.article.update({
-      where:{
-        id:+id
-      }
-      ,data: {
-        articleName: header ,
-        articleDetails: detail,
+      where: {
+        id: +id,
+      },
+      data: {
+        articleName: header,
+        articleDetails: cleanDetail,
         articleThumbnailLink: uploadResult,
       },
     });
@@ -126,7 +141,6 @@ module.exports.updateArticle = async (req, res, next) => {
     next(err);
   }
 };
-
 
 module.exports.uploadImage = async (req, res, next) => {
   try {
@@ -145,14 +159,31 @@ module.exports.uploadImage = async (req, res, next) => {
     }
     // console.log("uploadResult", uploadResult.secure_url);
 
-    const { header, detail,category } = req.body;
+    const { header, detail, category } = req.body;
     const { id } = req.user;
+    const sanitizeHtml = require("sanitize-html");
 
+    // ✅ sanitize HTML ที่ได้จาก React Quill
+    const cleanDetail = sanitizeHtml(detail, {
+      allowedTags: [
+        "b",
+        "i",
+        "u",
+        "strong",
+        "p",
+        "br",
+        "ul",
+        "ol",
+        "li",
+        "h1",
+        "h2",
+      ],
+    });
     const result = await prisma.article.create({
       data: {
         articleName: header,
-        articleDetails: detail,
-        category:category,
+        articleDetails: cleanDetail,
+        category: category,
         articleThumbnailLink: uploadResult.secure_url,
         userId: id,
       },
