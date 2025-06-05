@@ -111,7 +111,17 @@ module.exports.updateArticle = async (req, res, next) => {
         "li",
         "h1",
         "h2",
+        "a",
       ],
+      allowedAttributes: {
+        a: ["href", "target", "rel"],
+      },
+      transformTags: {
+        a: sanitizeHtml.simpleTransform("a", {
+          rel: "noopener noreferrer",
+          target: "_blank",
+        }),
+      },
     });
 
     const haveFile = !!req.file;
@@ -177,7 +187,17 @@ module.exports.uploadImage = async (req, res, next) => {
         "li",
         "h1",
         "h2",
+        "a",
       ],
+      allowedAttributes: {
+        a: ["href", "target", "rel"],
+      },
+      transformTags: {
+        a: sanitizeHtml.simpleTransform("a", {
+          rel: "noopener noreferrer",
+          target: "_blank",
+        }),
+      },
     });
     const result = await prisma.article.create({
       data: {
