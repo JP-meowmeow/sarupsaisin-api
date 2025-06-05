@@ -28,5 +28,5 @@ app.use(error);
 app.use("*", notFound);
 
 app.listen(process.env.PORT, () =>
-  console.log(`this server is running in port ${process.env.PORT}`)
+  console.log(`this server is running in ports ${process.env.PORT}`)
 );
