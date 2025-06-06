@@ -73,7 +73,7 @@ model Article {
   createdDate          DateTime   @default(now()) @db.Timestamp(0)
   updatedDate          DateTime   @updatedAt @db.Timestamp(0)
   articleThumbnailLink String
-  category             categories @default(JLPTN4)
+  category             categories 
   User                 User?      @relation(fields: [userId], references: [id])
   userId               Int?
   favorites            Favorite[]

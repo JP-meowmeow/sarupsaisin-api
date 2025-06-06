@@ -155,7 +155,8 @@ module.exports.updateArticle = async (req, res, next) => {
 module.exports.uploadImage = async (req, res, next) => {
   try {
     // console.log(req.headers.authorization)
-    // console.log("req.file", req.file);
+    console.log("req.file", req.file);
+    console.log("req", req);
 
     const haveFile = !!req.file;
     let uploadResult = {};
