@@ -29,6 +29,7 @@ model User {
   enrollments          Enrollment[]
   favorites            Favorite[]
   purchasedLevels      UserPurchasedLevel[]
+  Book                 Book[]
 
   @@map("user")
 }
@@ -73,7 +74,7 @@ model Article {
   createdDate          DateTime   @default(now()) @db.Timestamp(0)
   updatedDate          DateTime   @updatedAt @db.Timestamp(0)
   articleThumbnailLink String
-  category             categories 
+  category             categories
   User                 User?      @relation(fields: [userId], references: [id])
   userId               Int?
   favorites            Favorite[]
@@ -96,7 +97,6 @@ enum Level {
   JLPTN3
   JLPTN2
   JLPTN1
-   
 }
 
 model UserPurchasedLevel {
@@ -104,12 +104,13 @@ model UserPurchasedLevel {
   userId       Int
   jlptLevel    Level
   purchaseDate DateTime @default(now())
-  user User @relation(fields: [userId], references: [id])
+  user         User     @relation(fields: [userId], references: [id])
+
   @@map("userPurchaedLevel")
 }
 
 model JlptLevel {
-  id         Int    @id @default(autoincrement())
+  id         Int   @id @default(autoincrement())
   level      Level @unique // เช่น 'N5', 'N4'
   freeTestId Int? // อ้างอิงชุดข้อสอบฟรี (optional)
 
@@ -136,7 +137,7 @@ model Question {
   type       String // ประเภท เช่น "vocab", "grammar", "reading"
   content    String // เนื้อหาคำถาม
 
-  jlptTest    JlptTest      @relation(fields: [jlptTestId], references: [id])
+  jlptTest    JlptTest     @relation(fields: [jlptTestId], references: [id])
   choices     Choice[]
   Explanation Explanation?
 
@@ -202,4 +203,19 @@ model Unit {
   courseId Int?
 
   @@map("unit")
+}
+
+model Book {
+  id                Int      @id @default(autoincrement())
+  bookTitle         String
+  shortDescription  String
+  longDescription   String
+  price             Float
+  bookThumbnailLink String
+  userId            Int
+  user              User     @relation(fields: [userId], references: [id])
+  createdAt         DateTime @default(now())
+  samplePages       Json     @default("[]") // ← เปลี่ยนจาก String[] เป็น Json
+
+  @@map("book")
 }

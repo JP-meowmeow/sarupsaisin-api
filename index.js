@@ -4,6 +4,7 @@ const cors = require("cors");
 const error = require("./middlewares/error");
 const notFound = require("./middlewares/notFound");
 const authRoute = require("./routes/authRoute");
+const bookRoute = require("./routes/bookRoute")
 const articleRoute = require("./routes/articleRoute");
 const courseRoute = require("./routes/courseRoute");
 const paymentRoute = require("./routes/paymentRoute");
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use("/auth", authRoute);
 app.use("/article", articleRoute);
 app.use("/course", courseRoute);
+app.use("/book", bookRoute);
 app.use("/payment", paymentRoute);
 app.use("/jlpt", jlptRoute);
 app.use("/enrollment", enrollmentRoute);
