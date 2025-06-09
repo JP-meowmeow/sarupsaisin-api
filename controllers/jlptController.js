@@ -3,9 +3,11 @@ const createError = require("../utils/createError");
 
 module.exports.getJlptLevelData = async (req, res, next) => {
   const { level } = req.params;
+
+  
   try {
     const levelData = await prisma.jlptLevel.findUnique({
-      where: { level },
+      where: {level},
       include: {
         tests: true,
       },
@@ -17,11 +19,11 @@ module.exports.getJlptLevelData = async (req, res, next) => {
 
     res.json(levelData.tests);
   } catch (error) {
-    next(error)
+    next(error);
   }
 };
 
-module.exports.getJlptTestData = async(req,res,next)=>{
+module.exports.getJlptTestData = async (req, res, next) => {
   const { testId } = req.params;
   try {
     const testData = await prisma.jlptTest.findUnique({
@@ -37,11 +39,11 @@ module.exports.getJlptTestData = async(req,res,next)=>{
     });
 
     if (!testData) {
-      return res.status(404).json({ message: 'ไม่พบชุดข้อสอบ' });
+      return res.status(404).json({ message: "ไม่พบชุดข้อสอบ" });
     }
 
     res.json(testData.questions);
   } catch (error) {
     next(error);
   }
-}
+};
