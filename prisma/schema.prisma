@@ -82,6 +82,7 @@ model Article {
   @@map("article")
 }
 
+//article
 enum categories {
   JLPTN5
   JLPTN4
@@ -110,11 +111,13 @@ model UserPurchasedLevel {
 }
 
 model JlptLevel {
-  id         Int   @id @default(autoincrement())
-  level      Level @unique // เช่น 'N5', 'N4'
-  freeTestId Int? // อ้างอิงชุดข้อสอบฟรี (optional)
-
-  tests JlptTest[]
+  id            Int        @id @default(autoincrement())
+  level         Level      @unique // เช่น 'N5', 'N4'
+  freeTestId    Int? // อ้างอิงชุดข้อสอบฟรี (optional)
+  description   String? //คำโปรยหนังสือโชว์ในหน้าการ์ด
+  definition    String? //คำโปรยหนังสือโชว์ในหน้าหลัก
+  jlptThumbnail String?
+  tests         JlptTest[]
 
   @@map("jpltLevel")
 }
@@ -127,24 +130,39 @@ model JlptTest {
 
   questions Question[]
 
-  // jlptLevel JlptLevel  @relation(fields: [jlptLevelId], references: [id])
   jlptLevel JlptLevel @relation(fields: [jlptLevelId], references: [id], onDelete: Cascade)
 
   @@map("jpltTest")
 }
 
 model Question {
-  id         Int    @id @default(autoincrement())
-  content    String // เนื้อหาคำถาม
-  jlptTestId Int
-  type       String // ประเภท เช่น "vocab", "grammar", "reading"
-
+  id          Int          @id @default(autoincrement())
+  content     String // เนื้อหาคำถาม
+  jlptTestId  Int
+  type        QuestionType // ประเภท เช่น "vocab", "grammar", "reading"
+  number      Int // ข้อที่ xx (1-100)
+  passageId   Int? // null ถ้าเป็นคำถามเดี่ยว
   // jlptTest    JlptTest     @relation(fields: [jlptTestId], references: [id])
   jlptTest    JlptTest     @relation(fields: [jlptTestId], references: [id], onDelete: Cascade)
+  passage     Passage?     @relation(fields: [passageId], references: [id])
   choices     Choice[]
   Explanation Explanation?
 
   @@map("question")
+}
+
+model Passage {
+  id        Int        @id @default(autoincrement())
+  imageUrl  String // URL จาก Cloudinary
+  questions Question[]
+
+   @@map("passage")
+}
+
+enum QuestionType {
+  VOCAB
+  GRAMMAR
+  READING
 }
 
 model Choice {
