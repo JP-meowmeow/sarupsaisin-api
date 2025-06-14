@@ -1,13 +1,26 @@
 const prisma = require("../models/index");
 const createError = require("../utils/createError");
 
+module.exports.getJlptData = async (req, res, next) => {
+  try {
+    const jlptData = await prisma.jlptLevel.findMany();
+
+    if (!jlptData) {
+      return res.status(404).json({ message: "ไม่พบ Level ที่ต้องการ" });
+    }
+
+    res.json(jlptData);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports.getJlptLevelData = async (req, res, next) => {
   const { level } = req.params;
 
-  
   try {
     const levelData = await prisma.jlptLevel.findUnique({
-      where: {level},
+      where: { level },
       include: {
         tests: true,
       },
@@ -33,6 +46,7 @@ module.exports.getJlptTestData = async (req, res, next) => {
           include: {
             choices: true,
             Explanation: true,
+            passage: true,
           },
         },
       },

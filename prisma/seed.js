@@ -100,6 +100,13 @@ const courseData = [
   },
 ];
 
+const testData = [
+  {
+    name: "ข้อสอบจำลอง JLPT N5 ชุดที่ 1 ",
+    price: 0,
+  },
+];
+
 async function run() {
   try {
     // Clear previous data in correct order
@@ -172,8 +179,9 @@ async function run() {
     // Create one sample question
     await prisma.question.create({
       data: {
+        number: 1,
         jlptTestId: test.id,
-        type: "vocab",
+        type: "VOCAB",
         content: "「ありがとう」แปลว่าอะไร?",
         choices: {
           create: [
@@ -189,6 +197,54 @@ async function run() {
           },
         },
       },
+    });
+    // 1. สร้าง Passage
+    const passage = await prisma.passage.create({
+      data: {
+        title: "บทอ่านเกี่ยวกับโรงเรียน",
+        imageUrl: "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+        jlptTestId: test.id,
+        number: 71, // คำถามที่ 71-100 = จากบทอ่าน
+      },
+    });
+
+    // 2. คำถามจากบทอ่าน (เชื่อม passageId)
+    const questionFromPassage = await prisma.question.create({
+      data: {
+        jlptTestId: test.id,
+        passageId: passage.id,
+        number: 71,
+        content: "นักเรียนในบทความนี้ไปโรงเรียนโดยอะไร?",
+        type:"READING"
+      },
+    });
+
+    await prisma.explanation.create({
+      data: {
+        questionId: questionFromPassage.id,
+        text: "ในบทอ่านบอกว่าเดินไปโรงเรียน",
+      },
+    });
+
+    await prisma.choice.createMany({
+      data: [
+        { questionId: questionFromPassage.id, text: "เดิน", isCorrect: true },
+        {
+          questionId: questionFromPassage.id,
+          text: "จักรยาน",
+          isCorrect: false,
+        },
+        {
+          questionId: questionFromPassage.id,
+          text: "รถเมล์",
+          isCorrect: false,
+        },
+        {
+          questionId: questionFromPassage.id,
+          text: "รถยนต์",
+          isCorrect: false,
+        },
+      ],
     });
 
     console.log("✅ Seeding complete.");
