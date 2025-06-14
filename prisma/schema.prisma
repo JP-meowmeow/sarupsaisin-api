@@ -114,8 +114,8 @@ model JlptLevel {
   id            Int        @id @default(autoincrement())
   level         Level      @unique // เช่น 'N5', 'N4'
   freeTestId    Int? // อ้างอิงชุดข้อสอบฟรี (optional)
-  description   String? //คำโปรยหนังสือโชว์ในหน้าการ์ด
-  definition    String? //คำโปรยหนังสือโชว์ในหน้าหลัก
+  description   String? @db.LongText //คำโปรยหนังสือโชว์ในหน้าการ์ด 
+  definition    String? @db.LongText //คำโปรยหนังสือโชว์ในหน้าหลัก
   jlptThumbnail String?
   tests         JlptTest[]
 
@@ -131,6 +131,7 @@ model JlptTest {
   questions Question[]
 
   jlptLevel JlptLevel @relation(fields: [jlptLevelId], references: [id], onDelete: Cascade)
+  Passage   Passage[]
 
   @@map("jpltTest")
 }
@@ -152,11 +153,15 @@ model Question {
 }
 
 model Passage {
-  id        Int        @id @default(autoincrement())
-  imageUrl  String // URL จาก Cloudinary
-  questions Question[]
+  id         Int        @id @default(autoincrement())
+  title      String
+  number     Int // ข้อที่ xx (1-100)
+  jlptTestId Int
+  imageUrl   String // URL จาก Cloudinary
+  questions  Question[]
+  jlptTest   JlptTest   @relation(fields: [jlptTestId], references: [id], onDelete: Cascade)
 
-   @@map("passage")
+  @@map("passage")
 }
 
 enum QuestionType {

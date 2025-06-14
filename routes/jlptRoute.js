@@ -5,6 +5,7 @@ const jlptController = require("../controllers/jlptController");
 
 //payment page
 
+jlptRoute.get("/api/jlpt-tests", jlptController.getJlptData); //get course data for card
 jlptRoute.get("/api/jlpt-tests/:level", jlptController.getJlptLevelData); //get course data for payment
 jlptRoute.get("/api/jlpt-tests/:level/:testId", jlptController.getJlptTestData); //get course data for payment
 
