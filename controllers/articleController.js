@@ -13,7 +13,6 @@ module.exports.getArticle = async (req, res, next) => {
         id: +id,
       },
     });
-    console.log("test in article controller", articleData);
     res.json(articleData);
   } catch (err) {
     next(err);
