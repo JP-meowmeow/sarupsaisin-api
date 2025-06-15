@@ -114,8 +114,8 @@ model JlptLevel {
   id            Int        @id @default(autoincrement())
   level         Level      @unique // เช่น 'N5', 'N4'
   freeTestId    Int? // อ้างอิงชุดข้อสอบฟรี (optional)
-  description   String? @db.LongText //คำโปรยหนังสือโชว์ในหน้าการ์ด 
-  definition    String? @db.LongText //คำโปรยหนังสือโชว์ในหน้าหลัก
+  description   String?    @db.LongText //คำโปรยหนังสือโชว์ในหน้าการ์ด 
+  definition    String?    @db.LongText //คำโปรยหนังสือโชว์ในหน้าหลัก
   jlptThumbnail String?
   tests         JlptTest[]
 

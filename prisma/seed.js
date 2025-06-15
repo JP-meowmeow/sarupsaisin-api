@@ -100,12 +100,139 @@ const courseData = [
   },
 ];
 
-const testData = [
+const bookData = [
   {
-    name: "ข้อสอบจำลอง JLPT N5 ชุดที่ 1 ",
-    price: 0,
+    id: 1,
+    bookTitle: "โจทย์เตรียมสอบ PAT7.3",
+    shortDescription: "mock up test สำหรับเตรียมสอบ PAT7.3 พร้อมเฉลยละเอียด",
+    longDescription:
+      "หนังสือโจทย์เตรียมสอบ PAT7.3\r\nโจทย์และเฉลย คำอธิบายอย่างละเอียด",
+    price: 129,
+    bookThumbnailLink:
+      "https://res.cloudinary.com/dhwgh6rof/image/upload/v1749974470/1749974468316.jpg",
+    userId: 41,
+    createdAt: "2025-06-15 08:01:14.550",
+    samplePages:
+      '["https://res.cloudinary.com/dhwgh6rof/image/upload/v1749974471/1749974468385.jpg", "https://res.cloudinary.com/dhwgh6rof/image/upload/v1749974472/1749974468409.jpg", "https://res.cloudinary.com/dhwgh6rof/image/upload/v1749974473/1749974468423.jpg", "https://res.cloudinary.com/dhwgh6rof/image/upload/v1749974474/1749974468437.jpg"]',
   },
 ];
+
+const choiceData = [
+  {
+    id: 25,
+    text: "ขอโทษ",
+    isCorrect: 0,
+    questionId: 7,
+  },
+  {
+    id: 26,
+    text: "ขอบคุณ",
+    isCorrect: 1,
+    questionId: 7,
+  },
+  {
+    id: 27,
+    text: "ลาก่อน",
+    isCorrect: 0,
+    questionId: 7,
+  },
+  {
+    id: 28,
+    text: "สวัสดี",
+    isCorrect: 0,
+    questionId: 7,
+  },
+  {
+    id: 29,
+    text: "เดิน",
+    isCorrect: 1,
+    questionId: 8,
+  },
+  {
+    id: 30,
+    text: "จักรยาน",
+    isCorrect: 0,
+    questionId: 8,
+  },
+  {
+    id: 31,
+    text: "รถเมล์",
+    isCorrect: 0,
+    questionId: 8,
+  },
+  {
+    id: 32,
+    text: "รถยนต์",
+    isCorrect: 0,
+    questionId: 8,
+  },
+  {
+    id: 33,
+    text: "สมชาย",
+    isCorrect: 1,
+    questionId: 10,
+  },
+  {
+    id: 34,
+    text: "สมทรง",
+    isCorrect: 0,
+    questionId: 10,
+  },
+  {
+    id: 35,
+    text: "สมหมาย",
+    isCorrect: 0,
+    questionId: 10,
+  },
+  {
+    id: 36,
+    text: "สมรักษ์ คำสิงห์",
+    isCorrect: 0,
+    questionId: 10,
+  },
+];
+
+const explanation = [
+  {
+    id: 7,
+    text: "「ありがとう」 แปลว่า ขอบคุณ ใช้ในสถานการณ์ทั่วไป",
+    questionId: 7,
+  },
+  {
+    id: 8,
+    text: "ในบทอ่านบอกว่าเดินไปโรงเรียน",
+    questionId: 8,
+  },
+];
+
+const question = [
+  {
+    id: 7,
+    content: "「ありがとう」แปลว่าอะไร?",
+    jlptTestId: 9,
+    type: "VOCAB",
+    number: 1,
+    passageId: null,
+  },
+  {
+    id: 8,
+    content: "นักเรียนในบทความนี้ไปโรงเรียนโดยอะไร?",
+    jlptTestId: 9,
+    type: "READING",
+    number: 71,
+    passageId: 2,
+  },
+  {
+    id: 10,
+    content: "นักเรียนในบทความนี้ชื่อว่าอะไร",
+    jlptTestId: 9,
+    type: "READING",
+    number: 72,
+    passageId: 2,
+  },
+];
+
+
 
 async function run() {
   try {
@@ -155,7 +282,7 @@ async function run() {
     }
 
     // Create JLPT Levels safely using upsert
-    const levels = ["JLPTN5", "JLPTN4"];
+    const levels = ["JLPTN5", "JLPTN4","JLPTN3","JLPTN2","JLPTN1"];
     const levelIds = {};
 
     for (const level of levels) {
@@ -215,7 +342,7 @@ async function run() {
         passageId: passage.id,
         number: 71,
         content: "นักเรียนในบทความนี้ไปโรงเรียนโดยอะไร?",
-        type:"READING"
+        type: "READING",
       },
     });
 
