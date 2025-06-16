@@ -3,9 +3,9 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 const passageImageUrl = "https://res.cloudinary.com/demo/image/upload/sample.jpg";
-const testsPerLevel = 3;
-const questionsPerTest = 10;
-const passageQuestions = 3;
+const testsPerLevel = 2;
+const questionsPerTest = 5;
+const passageQuestions = 2;
 
 const jlptLevel = [
   {
