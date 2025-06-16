@@ -138,7 +138,7 @@ model JlptTest {
 
 model Question {
   id          Int          @id @default(autoincrement())
-  content     String // เนื้อหาคำถาม
+  content     String       @db.LongText // เนื้อหาคำถาม 
   jlptTestId  Int
   type        QuestionType // ประเภท เช่น "vocab", "grammar", "reading"
   number      Int // ข้อที่ xx (1-100)
@@ -168,6 +168,7 @@ enum QuestionType {
   VOCAB
   GRAMMAR
   READING
+  LISTENING
 }
 
 model Choice {
@@ -184,7 +185,7 @@ model Choice {
 
 model Explanation {
   id         Int    @id @default(autoincrement())
-  text       String // คำอธิบายเกี่ยวกับเฉลย
+  text       String @db.LongText // คำอธิบายเกี่ยวกับเฉลย
   questionId Int    @unique
 
   // question Question @relation(fields: [questionId], references: [id])
